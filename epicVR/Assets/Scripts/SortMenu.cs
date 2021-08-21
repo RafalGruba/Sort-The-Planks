@@ -12,9 +12,16 @@ public class SortMenu : MonoBehaviour
 
     [HideInInspector]
     public SortingScript activeSorter;
+    SFXManager sfxInstance;
+
+    private void Start()
+    {
+        sfxInstance = FindObjectOfType<SFXManager>();        
+    }
 
     public void StartSelectionSort()
     {
+        sfxInstance.PlaybuttonClickedSFX();
         activeSorter = Instantiate(sortingScript);
         activeSorter.numberOfCubes = Convert.ToInt32(inputNumberOfCubes.value);
         activeSorter.cubeHeightMax = Convert.ToInt32(inputHeightOfCubes.value);
@@ -23,6 +30,7 @@ public class SortMenu : MonoBehaviour
 
     public void StartBubbleSort()
     {
+        sfxInstance.PlaybuttonClickedSFX();
         activeSorter = Instantiate(sortingScript);
         activeSorter.numberOfCubes = Convert.ToInt32(inputNumberOfCubes.value);
         activeSorter.cubeHeightMax = Convert.ToInt32(inputHeightOfCubes.value);
@@ -31,6 +39,7 @@ public class SortMenu : MonoBehaviour
 
     public void StartQuickSort()
     {
+        sfxInstance.PlaybuttonClickedSFX();
         activeSorter = Instantiate(sortingScript);
         activeSorter.numberOfCubes = Convert.ToInt32(inputNumberOfCubes.value);
         activeSorter.cubeHeightMax = Convert.ToInt32(inputHeightOfCubes.value);
@@ -39,11 +48,13 @@ public class SortMenu : MonoBehaviour
 
     public void ResetSort()
     {
+        sfxInstance.PlaybuttonClickedSFX();
         Destroy(activeSorter.gameObject);
     }
 
     public void QuitApp()
     {
+        sfxInstance.PlaybuttonClickedSFX();
         Application.Quit();
     }    
 

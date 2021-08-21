@@ -7,6 +7,7 @@ public class SortingScript : MonoBehaviour
     public int numberOfCubes = 10;
     public int cubeHeightMax = 10;
     public GameObject[] cubes;
+    public Material myMaterial;
 
 
 
@@ -56,7 +57,6 @@ public class SortingScript : MonoBehaviour
                         LeanTween.moveLocalZ(unsortedList[j], 3f, 0.5f).setLoopPingPong(1);
                     }
                 }
-                //LeanTween.color(unsortedList[j], Color.green, 1f);
             }
             cc.IncrementCounter();
             if (i + 1 != right)
@@ -76,8 +76,6 @@ public class SortingScript : MonoBehaviour
 
                 LeanTween.moveLocalX(unsortedList[right], tempPosition2.x, 1f);
                 LeanTween.moveLocalZ(unsortedList[right], 3f, 0.5f).setLoopPingPong(1);
-
-                //LeanTween.color(unsortedList[i + 1], Color.green, 1f);
             }
 
             int pivotIndex = i + 1;
@@ -127,15 +125,8 @@ public class SortingScript : MonoBehaviour
                     LeanTween.moveLocalX(unsortedList[j], tempPosition.x, 1f);
                     LeanTween.moveLocalZ(unsortedList[j], 3f, 0.5f).setLoopPingPong(1);
                 }
-                cc.IncrementCounter();
-                if (unsortedList[j].transform.localScale.y <= unsortedList[j].transform.localScale.y)
-                {
-                    LeanTween.color(unsortedList[j + 1], Color.green, 1f);
-                    LeanTween.color(unsortedList[j], Color.white, 1f);
-                }
             }
         }
-        LeanTween.color(unsortedList[0], Color.green, 1f);
     }
     public void StartBubbleSort()
     {
@@ -188,7 +179,6 @@ public class SortingScript : MonoBehaviour
                 LeanTween.moveLocalX(unsortedList[min], tempPosition.x, 1f);
                 LeanTween.moveLocalZ(unsortedList[min], 3f, 0.5f).setLoopPingPong(1);
             }
-            LeanTween.color(unsortedList[i], Color.green, 1f);
         }
     }
     public void StartSelectionSort()
@@ -201,20 +191,28 @@ public class SortingScript : MonoBehaviour
     // Spawn Cubes
     void SpawnCubes()
     {
+        CameraFOV cFOV = FindObjectOfType<CameraFOV>();
+        cFOV.AdjustCamera();
+
         cubes = new GameObject[numberOfCubes];
 
         for (int i = 0; i < numberOfCubes; i++)
         {
-            int randomNumber = Random.Range(1, cubeHeightMax + 1);
+            int randomNumber = Random.Range(1, cubeHeightMax);
 
             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             cube.transform.localScale = new Vector3(0.9f, randomNumber, 1);
             cube.transform.position = new Vector3(i, randomNumber / 2f, 0);
             cube.transform.parent = this.transform;
-
+            //LeanTween.color(cube, Color.magenta, 0f);
+            cube.GetComponent<Renderer>().material = myMaterial;
             cubes[i] = cube;
         }
         transform.position = new Vector3(-numberOfCubes / 2f, -cubeHeightMax /2f, 0);
     }
 
+    public int ReturnNumberOfCubes()
+    {
+        return numberOfCubes;
+    }
 }
