@@ -17,7 +17,7 @@ public class HeightOfCubesUI : MonoBehaviour
 
     public void UpdateText(float value)
     {
-        text.text = "Height of cubes: " + value.ToString();
+        text.text = "Height of planks: " + value.ToString();
     }
 
 }

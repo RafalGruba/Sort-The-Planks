@@ -17,7 +17,7 @@ public class NumberOfCubesUI : MonoBehaviour
 
     public void UpdateText(float value)
     {
-        text.text = "Number of cubes: " + value.ToString();
+        text.text = "Number of planks: " + value.ToString();
     }
 
 }
