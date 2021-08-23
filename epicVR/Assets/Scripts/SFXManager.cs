@@ -6,6 +6,7 @@ public class SFXManager : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip buttonClickedSFX;
+    public AudioClip buttonClickedSFX2;
 
     public static SFXManager sfxInstance;
 
