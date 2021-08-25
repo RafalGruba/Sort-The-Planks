@@ -200,3 +200,4 @@ Received Import Request.
 Start importing Assets/OriginThinSetup.exe using Guid(9d79a32dc6793204aa916be89b8caa3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad70cab4eb1dd8b25a9c441e3a16fe79') in 0.020998 seconds 
   Import took 0.023548 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
